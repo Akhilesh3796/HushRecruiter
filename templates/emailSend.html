@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <!-- <link rel= "stylesheet" type= "text/css" href= "emailSend.css"> -->
+    </head>
+
+    <body>
+        <form action="/send-email"> 
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+                <div style="
+                font-family: 'Courier New', Courier, monospace;
+                font-weight: bold;
+                background-color: #080A0B;
+                color: white;
+                width: 500px;
+                height: 500px;
+                padding: 0px 10px 0px 0px;
+                border-left: 2px solid #35AAA6;
+                margin-left: 50vh;">
+                    <div style="position: absolute;
+                    width: 50px;
+                    height: 50px;
+                    background-color: #C8668C;
+                    padding: 0px;
+                    border: 0;
+                    margin: 0%;">
+                        <div style="width: 10px;
+                        height: 10px;
+                        background-color: #35AAA6;
+                        padding: 0%;
+                        margin-left: 44px;
+                        margin-top: 40px;">
+
+                        </div>
+                    </div>
+                    </br></br></br>
+                    <h1 style="padding: 10px;">The HushHush challenge <br/>
+                        is back.</h1>
+                    <br/>
+                    <p style="padding-left: 10px;">You told us you've got what it takes to rescue The
+                        Bunny Planet, defeat the evil Commander Lambda and
+                        uncover the deeper mysteries of hush.hush.</p>
+                    <br/>
+                    <p style="color: #977520; padding-left: 10px;">Still up for the challenge?</p>
+                    <a href="{{ url_for('codeChallenge', user_id=user, _external=True) }}">
+                    <button class="myButton" style="background-color: #EE67A4;
+                    height: 30px;
+                    font-family: 'Courier New', Courier, monospace;
+                    font-weight: 600;
+                    font-size: 14px;
+                    border: 0px;
+                    margin-left: 10px;">Log in to play</button></a>
+                    <br/><br/><br/>
+                    <p style="color: #977520; font-size: small; padding-left: 10px;">NOTE: This is a one time use code. Please proceed when
+                        you're ready to play.</p>
+                </div>
+            <!-- <script type="text/javascript">
+                document.getElementById("myButton").onclick = function () {
+                    location.href = "/Users/ayushgoyal/Desktop/BigData/codeEditor.html";
+                };
+            </script> -->
+            </table>
+        </form>
+    </body>
+</html>

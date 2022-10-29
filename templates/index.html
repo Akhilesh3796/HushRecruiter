@@ -1,0 +1,52 @@
+<html>
+    <head>
+        
+    </head>
+    <style>
+        * {margin: 0; padding: 0}
+        body {background: #000;}
+        canvas {display: block;}
+
+        .center {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        .submitbutton{
+            margin: 50vh;
+            border-radius: 5px;
+            background-color: #000;
+            color: #0f0;
+            border-color: #0f0;
+            width: 150px;
+            height: 50px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: large;
+        }
+
+        h2{
+            padding-top: 20px;
+            color: #0f0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+    </style>
+    <body>
+        <form action="/loading" method="post" enctype="multipart/form-data">
+            <h2 align="center">Welcome to the demo of Team-2.</h2>
+            <div class="center">
+                <input class="submitbutton" type="submit" value="Play Demo">
+            </div>
+        <!-- <script type="text/javascript">
+            document.getElementById("myButton").onclick = function () {
+                location.href = "/Users/ayushgoyal/Desktop/BigData/loading.html";
+            };
+        </script> -->
+        </form>
+    </body>
+</html>

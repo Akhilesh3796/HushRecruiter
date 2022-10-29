@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="refresh" content="108000";>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+        <script>
+            $(document).ready(function () {
+                var tabs = $("#tabs").tabs();
+            $('ul.question-bar > li')
+                    .click(function (e) {
+                tabs(jQuery(this).attr('data-toggle'));
+                $('ul.question-bar > li')
+                    .removeClass('active');
+                $(this).addClass('active');
+
+                function tabs(tab) {
+                jQuery('.tab-content').find(tab).show();
+                // jQuery('.tab-content .tab').hide()
+            }
+            });
+            });
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() 
+            {
+                const count_down_date = ( Date.now() / 1000 ) + ( 3 * 60 * 60 );
+                const p = document.getElementById("countdown");
+                const count = window.setInterval( function() 
+                {
+                    const now = ( Date.now() / 1000 );
+                    const diff = count_down_date - now;
+                    // const days = Math.floor( diff / ( 60 * 60 * 24 ) );
+                    const hours = Math.floor( ( diff % ( 60 * 60 * 24 ) ) / ( 60 * 60 ) );
+                    const minutes = Math.floor( ( diff % ( 60 * 60 ) ) / 60 );
+                    const seconds = Math.floor( ( diff % 60 )  );
+            
+                    p.innerHTML = `${hours}:${minutes}:${seconds}`;
+                    if (diff < 0) 
+                    {
+                        window.clearInterval(count); 
+                        p.innerHTML = "TimeOut!";
+                    } 
+                }, 1000);
+        })
+        </script>
+        <title>HushHush Recruiters</title>
+    </head>
+    <style>
+        .question-bar>.active>a {
+            background-color: #111;
+            color: green;
+        }
+        textarea {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box; 
+
+            max-width: 100%;
+            max-height: 100%;
+        }   
+    </style>
+    <body>
+        <form action="{{ url_for('submissionDone', user_id=user, _external=True) }}" method="post" enctype="multipart/form-data">  
+                <h2 align="center"> Welcome {{user}} to the coding round! </h2></br>
+                <div style="display: flex; justify-content: space-between; padding-bottom: 20px;">
+                    <p align="left" style="padding-left: 20px; color: white; flex-basis: 49.5%;">You have exactly 3 hours to do this challenge. Only click on submit when you are ready with the submission of all 3 challenges.</br>If time runs out, the submission will be automatically done.</p>
+                    <p align="right" id="countdown" style="color:#35BEB8 ;padding-right: 20px; font-weight: bold; font-size: large; flex-basis: 49.5%;"></p>
+                </div>
+                <div class="container-info" id="tabs">
+                    <ul style="margin-top: 0;" id="question" class="question-bar">
+                        <li class="active"><a style="color: #F27F1F;" href="#Question_1">Question 1</a></li>
+                        <li><a style="color: #F27F1F;" href="#Question_2">Question 2</a></li>
+                        <li><a style="color: #F27F1F;" href="#Question_3">Question 3</a></li>
+                    </ul>
+                    
+                    <div class="tab-content">
+                    <div style="padding: 20px;">
+                        <div id="Question_1" class="tab">
+                            <p style="color: white;" name="question1">Let's learn about list comprehensions! You are given three integers  and  representing the dimensions of a cuboid along with an integer . Print a list of all possible coordinates given by  on a 3D grid where the sum of  is not equal to . Here, . Please use list comprehensions rather than multiple loops, as a learning exercise.
+                            </br></br>
+                                Example
+                            </br>
+                                x = 1
+                            </br>
+                                y = 1
+                            </br>
+                                z = 2
+                            </br>
+                                n = 3
+                            </br></br>
+                                
+                                All permutations of [i,j,k] are:</br>
+                                [[0, 0, 0], [0, 0, 1], [0, 0, 2], [0, 1, 0], [0, 1, 1], [0, 1, 2], [1, 0, 0], [1, 0, 1], [1, 0, 2], [1, 1, 0], [1, 1, 1], [1, 1, 2]]</br>
+                            </br>
+                                Print an array of the elements that do not sum to n=3.</br>
+                                [[0, 0, 0], [0, 0, 1], [0, 0, 2], [0, 1, 0], [0, 1, 1], [1, 0, 0], [1, 0, 1], [1, 1, 0], [1, 1, 2]]</br>
+                            </br>
+                                Input Format</br>
+                            </br>
+                                Four integers x,y,z and n, each on a separate line.</br>
+                            </br>
+                                Constraints</br>
+                            </br>
+                                Print the list in lexicographic increasing order.</br>
+                            </br>
+                                Sample Input 0</br>
+                                
+                                1</br>
+                                1</br>
+                                1</br>
+                                2</br></br>
+                                Sample Output 0</br>
+                                
+                                [[0, 0, 0], [0, 0, 1], [0, 1, 0], [1, 0, 0], [1, 1, 1]]</br></br>
+                                Explanation 0</br>
+                                
+                                Each variable  and  will have values of  or . All permutations of lists in the form .
+                                Remove all arrays that sum to  to leave only the valid permutations.</br></br>
+                                
+                                Sample Input 1</br>
+                                
+                                2</br>
+                                2</br>
+                                2</br>
+                                2</br></br>
+                                Sample Output 1</br>
+                                
+                                [[0, 0, 0], [0, 0, 1], [0, 1, 0], [0, 1, 2], [0, 2, 1], [0, 2, 2], [1, 0, 0], [1, 0, 2], [1, 1, 1], [1, 1, 2], [1, 2, 0], [1, 2, 1], [1, 2, 2], [2, 0, 1], [2, 0, 2], [2, 1, 0], [2, 1, 1], [2, 1, 2], [2, 2, 0], [2, 2, 1], [2, 2, 2]]                  
+                                </p>
+                        </div>
+                        <div id="Question_2" class="tab">
+                            <p style="color: white;" name="question2">In Python, a string can be split on a delimiter.</br></br>
+
+                                Example:</br></br>
+                                
+                                >>> a = "this is a string"</br>
+                                >>> a = a.split(" ") # a is converted to a list of strings. </br>
+                                >>> print a</br>
+                                ['this', 'is', 'a', 'string']</br>
+                                Joining a string is simple:</br></br>
+                                
+                                >>> a = "-".join(a)</br>
+                                >>> print a</br>
+                                this-is-a-string </br>
+                                Task</br>
+                                You are given a string. Split the string on a " " (space) delimiter and join using a - hyphen.</br></br>
+                                
+                                Function Description</br></br>
+                                
+                                Complete the split_and_join function in the editor below.</br></br>
+                                
+                                split_and_join has the following parameters:</br></br>
+                                
+                                string line: a string of space-separated words</br>
+                                Returns</br></br>
+                                
+                                string: the resulting string</br>
+                                Input Format</br>
+                                The one line contains a string consisting of space separated words.</br></br>
+                                
+                                Sample Input</br></br>
+                                
+                                this is a string   </br>
+                                Sample Output</br></br>
+                                
+                                this-is-a-string</p>
+                        </div>
+                        <div id="Question_3" class="tab">
+                            <p style="color: white;" name="question3">You are asked to ensure that the first and last names of people begin with a capital letter in their passports. For example, alison heck should be capitalised correctly as Alison Heck.
+                            </br>alison heck = Alison Heck
+                            </br></br>
+                                Given a full name, your task is to capitalize the name appropriately.</br></br>
+                                
+                                Input Format</br></br>
+                                
+                                A single line of input containing the full name, S.</br></br>
+                                
+                                Constraints</br></br>
+                                1. length od S must be in between 100 and 1000 (both exclusive).
+                                2. The string consists of alphanumeric characters and spaces.</br>
+                                Note: in a word only the first character is capitalized. Example 12abc when capitalized remains 12abc.
+                            </br></br>
+                                Output Format</br></br>
+                                
+                                Print the capitalized string, S.</br></br>
+                                
+                                Sample Input</br></br>
+                                
+                                chris alan</br>
+                                Sample Output</br></br>
+                                
+                                Chris Alan</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                
+                <div class="container-main">
+                    <textarea name="text" cols="110" rows="35" style="margin-left:20px; background-color: #111111; color: #F4B402; margin-bottom: 15px;">Write your code here.</textarea>
+                    <input type="submit" value="Submit" style="background-color:#EE67A4;color:white;padding:5px;font-size:18px;border:none;padding:8px;margin-left:836px; font-weight: bold;">
+                </div>
+        </form>
+    </body>
+</html>
